@@ -1,17 +1,21 @@
 <?php
 return [
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', '*'],
     'allowed_methods' => ['*'],
     'allowed_origins' => [
         'https://arcyantix.com',
         'https://www.arcyantix.com',
-        'https://api.arcyantix.com',
-        'http://localhost:5173', // For local development
-        'http://localhost:3000', // Alternative local port
+        'http://localhost:5173',
+        'http://localhost:3000',
+        'http://127.0.0.1:5173',
+        'http://127.0.0.1:3000',
     ],
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => [
+        // Add patterns if needed for dynamic subdomains
+        '/^https:\/\/.*\.arcyantix\.com$/',
+    ],
     'allowed_headers' => ['*'],
-    'exposed_headers' => [],
-    'max_age' => 0,
+    'exposed_headers' => ['*'],
+    'max_age' => 86400, // 24 hours
     'supports_credentials' => true,
 ];

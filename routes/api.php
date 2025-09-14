@@ -20,6 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Add these debug routes at the top
+Route::get('/debug/test', [App\Http\Controllers\Api\DebugController::class, 'test']);
+Route::post('/debug/test', [App\Http\Controllers\Api\DebugController::class, 'test']);
+Route::options('/debug/test', [App\Http\Controllers\Api\DebugController::class, 'options']);
 // Contact Management API Routes
 Route::prefix('contacts')->group(function () {
     
